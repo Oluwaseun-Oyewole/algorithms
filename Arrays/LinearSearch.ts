@@ -1,5 +1,5 @@
 // O(N)
-export default function linear_search(
+export default function linearSearch(
   haystack: number[],
   needle: number
 ): boolean {
@@ -9,4 +9,4 @@ export default function linear_search(
   return false;
 }
 
-console.log(linear_search([1, 2, 3, 4, 5], 4));
+console.log(linearSearch([1, 2, 3, 4, 5], 4));

@@ -1,5 +1,5 @@
 // O(log N)
-export default function binary_search(
+export default function binarySearch(
   haystack: number[],
   needle: number
 ): boolean {
@@ -17,4 +17,4 @@ export default function binary_search(
   return false;
 }
 
-console.log(binary_search([1, 2, 3, 3, 5, 6, 7], 6));
+console.log(binarySearch([1, 2, 3, 3, 5, 6, 7], 6));
