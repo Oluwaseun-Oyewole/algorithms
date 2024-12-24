@@ -4,11 +4,13 @@ type Node<T> = {
 };
 
 // O(1)
-// LinkedList implementation of Queue
+// LinkedList implementation of Queue using Singly linked list
+// FIFO - (First In First Out)
 export default class Queue<T> {
   public length: number;
   private head?: Node<T>;
   private tail?: Node<T>;
+
   constructor() {
     this.head = this.tail = undefined;
     this.length = 0;
@@ -35,6 +37,7 @@ export default class Queue<T> {
     this.tail.next = node;
     this.tail = node;
   }
+
   peek() {
     return this.head?.value;
   }
