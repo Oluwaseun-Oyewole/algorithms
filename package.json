@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx --yes tsx --watch ./Arrays/CrystalBall.ts"
+    "dev": "npx --yes tsx --watch ./Queues/index.ts"
   },
   "keywords": [],
   "author": "",

@@ -1,12 +1,9 @@
 // O(N)
-export default function linearSearch(
-  haystack: number[],
-  needle: number
-): boolean {
+export default function linearSearch<T>(haystack: T[], needle: T) {
   for (let index = 0; index <= haystack.length; index++) {
     if (haystack[index] === needle) return true;
   }
   return false;
 }
 
-console.log(linearSearch([1, 2, 3, 4, 5], 4));
+linearSearch([1, 2, 3, 4, 5], 4);

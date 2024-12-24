@@ -1,8 +1,5 @@
 // O(log N)
-export default function binarySearch(
-  haystack: number[],
-  needle: number
-): boolean {
+export default function binarySearch<T>(haystack: T[], needle: T) {
   let low = 0;
   let high = haystack.length;
   do {
@@ -17,4 +14,4 @@ export default function binarySearch(
   return false;
 }
 
-console.log(binarySearch([1, 2, 3, 3, 5, 6, 7], 6));
+binarySearch([1, 2, 3, 3, 5, 6, 7], 6);
