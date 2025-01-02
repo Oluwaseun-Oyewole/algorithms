@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx --yes tsx --watch ./Recursion/index.ts"
+    "dev": "tsc Arrays/QuickSort.ts",
+    "watch": "tsc --watch Arrays/QuickSort.ts"
   },
   "keywords": [],
   "author": "",

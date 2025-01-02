@@ -7,25 +7,25 @@ export default function crystalBall<T>(breaks: T[]) {
   let firstJump = Math.floor(Math.sqrt(breaks.length));
   let index = firstJump;
   for (; index < breaks.length; index += firstJump) {
-    if (breaks[index]) breaks;
+    if (breaks[index]) break;
   }
   index -= firstJump;
   for (let j = index; j < breaks.length; j++) {
-    if (breaks[index]) return index;
+    if (breaks[index]) return j;
     return -1;
   }
 }
 
-crystalBall<boolean>([
-  true,
-  false,
-  true,
-  false,
-  true,
-  false,
-  false,
-  false,
-  true,
-]);
+// crystalBall<boolean>([
+//   true,
+//   false,
+//   true,
+//   false,
+//   true,
+//   false,
+//   false,
+//   false,
+//   true,
+// ]);
 
-crystalBall<number>([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+console.log(crystalBall<number>([1, 2, 3, 4, 5, 6, 7, 8]));

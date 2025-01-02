@@ -1,41 +1,36 @@
-type Node<T> = {
-  value: T;
-  next?: Node<T>;
+type QNode<QN> = {
+  value: QN;
+  next?: QNode<QN>;
 };
 
 // O(1)
 // LinkedList implementation of Queue using Singly linked list
 // FIFO - (First In First Out)
-export default class Queue<T> {
-  public length: number;
-  private head?: Node<T>;
-  private tail?: Node<T>;
+export default class Queue<QL> {
+  head?: QNode<QL>;
+  tail?: QNode<QL>;
+  length: number = 0;
 
   constructor() {
     this.head = this.tail = undefined;
-    this.length = 0;
+  }
+
+  enqueue(item: QL) {
+    this.length++;
+    const node = { value: item } as QNode<QL>;
+    if (!this.tail) return (this.head = this.tail = node);
+    this.tail = node;
+    this.tail.next = node;
   }
   dequeue() {
     if (!this.head) return undefined;
     this.length--;
-    const head = this.head;
+
+    const current = this.head;
     this.head = this.head.next;
 
-    if (!this.head) {
-      this.tail = undefined; // Queue is now empty
-    }
-    head.next = undefined;
-    return head.value;
-  }
-  enqueue(item: T) {
-    const node = { value: item } as Node<T>;
-    this.length++;
-    if (!this.tail) {
-      this.tail = this.head = node;
-      return;
-    }
-    this.tail.next = node;
-    this.tail = node;
+    current.next = undefined;
+    return current.value;
   }
 
   peek() {

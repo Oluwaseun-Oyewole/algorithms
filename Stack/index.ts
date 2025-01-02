@@ -5,13 +5,8 @@ type Node<T> = {
 
 // LIFO
 export default class Stack<T> {
-  public length: number;
+  public length: number = 0;
   public head?: Node<T>;
-
-  constructor() {
-    this.length = 0;
-    this.head = undefined;
-  }
 
   push(item: T) {
     const node = { value: item } as Node<T>;
