@@ -1,30 +1,29 @@
-function recursive_quick_sort<R>(arr: R[]) {}
+type StackNode<N> = {
+  value: N;
+  prev?: StackNode<N>;
+};
 
-function partition<P>(arr: P[]) {
-  const low = 0;
-  const high = arr.length - 1;
-  const pivot = arr[high];
-  let idx = low - 1;
-  for (let index = low; index < high; index++) {
-    if (arr[index] >= pivot) {
-      idx++;
-    }
+class Stack<T> {
+  head?: StackNode<T>;
+  length = 0;
+
+  push(value: T) {
+    const node = { value } as StackNode<T>;
+    this.length++;
+    if (!this.head) return (this.head = node);
+    node.prev = this.head;
+    this.head.prev = node;
   }
-}
-export default function quickSort<T extends number>(arr: T[]): number[] {
-  if (arr.length <= 1) return arr;
-  const pivot = arr[arr.length - 1];
-  const left: T[] = [];
-  const right: T[] = [];
-
-  for (let index = 0; index < arr.length - 1; index++) {
-    if (arr[index] <= pivot) {
-      left.push(arr[index]);
-    } else {
-      right.push(arr[index]);
+  pop() {
+    if (this.length === 0) {
+      const current = this.head;
+      this.head = undefined;
+      return current?.value;
     }
-  }
 
-  return [...quickSort(left), pivot, ...quickSort(right)];
-  // return [...quickSort(left), pivot, quickSort(right)];
+    this.length--;
+    const head = this.head;
+    this.head = this.head?.prev;
+    return head?.value;
+  }
 }

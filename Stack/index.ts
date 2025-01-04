@@ -3,19 +3,18 @@ type Node<T> = {
   prev: Node<T>;
 };
 
-// LIFO
+// LIFO, Dynamic implementation
 export default class Stack<T> {
   public length: number = 0;
   public head?: Node<T>;
+  size: number = 2;
 
   push(item: T) {
     const node = { value: item } as Node<T>;
-    this.length++;
-    if (!this.head) {
-      this.head = node;
-    }
+    if (!this.head) return (this.head = node);
+
+    this.head = node;
     node.prev = this.head;
-    this.head.prev = node;
   }
 
   pop() {
@@ -25,12 +24,19 @@ export default class Stack<T> {
       this.head = undefined;
       return head?.value;
     }
+    this.length--;
     const head = this.head;
-    this.head = this.head.prev;
+    this.head = this.head?.prev;
     return head?.value;
   }
 
   peak() {
     return this.head?.value;
+  }
+  isEmpty() {
+    return this.length === 0;
+  }
+  isFull() {
+    return this.length === this.size;
   }
 }
