@@ -29,26 +29,6 @@ class AsyncRequestQueue {
   }
 }
 
-// const queue = new AsyncRequestQueue();
-
-// queue.add(async () => {
-//   console.log("Request 1 started");
-//   await new Promise((resolve) => setTimeout(resolve, 1000)); //simulate delay for 1hour
-//   console.log("Request 1 ended");
-// });
-
-// queue.add(async () => {
-//   console.log("Request 2 started");
-//   await new Promise((resolve) => setTimeout(resolve, 500));
-//   console.log("Request 2 completed");
-// });
-
-// queue.add(async () => {
-//   console.log("Request 3 started");
-//   await new Promise((resolve) => setTimeout(resolve, 300));
-//   console.log("Request 3 completed");
-// });
-
 type LinkedListQueueNode<L> = {
   value: () => Promise<void>;
   next?: LinkedListQueueNode<L>;

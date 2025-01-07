@@ -1,29 +1,21 @@
-type StackNode<N> = {
-  value: N;
-  prev?: StackNode<N>;
-};
-
-class Stack<T> {
-  head?: StackNode<T>;
-  length = 0;
-
-  push(value: T) {
-    const node = { value } as StackNode<T>;
-    this.length++;
-    if (!this.head) return (this.head = node);
-    node.prev = this.head;
-    this.head.prev = node;
-  }
-  pop() {
-    if (this.length === 0) {
-      const current = this.head;
-      this.head = undefined;
-      return current?.value;
+function merge<T>(left: T[], right: T[]) {
+  const sorted = [];
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      sorted.push(left.shift());
+    } else {
+      sorted.push(right.shift());
     }
-
-    this.length--;
-    const head = this.head;
-    this.head = this.head?.prev;
-    return head?.value;
   }
+}
+
+function mergeSort<T>(arr: T[]) {
+  if (arr.length < 2) return arr;
+
+  const mid = Math.floor(arr.length / 2);
+  const left = arr.slice(0, mid);
+  const right = arr.slice(mid);
+
+  const leftArr = mergeSort(left);
+  const rightArr = mergeSort(right);
 }

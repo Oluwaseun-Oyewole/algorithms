@@ -9,7 +9,6 @@ class ArrayList<A> {
     this.size = 0;
   }
 
-  // we use a linked list to add element to the end of the array.
   // the operation is O(1)
   add(element: A) {
     if (this.size === this.capacity) this.resize();
@@ -26,6 +25,7 @@ class ArrayList<A> {
     this.data = newArray;
   }
 
+  // O(1)
   remove(index: number) {
     if (index < 0 || index >= this.size) return;
 
@@ -37,7 +37,7 @@ class ArrayList<A> {
     return removedElement;
   }
 
-  // the operation is O(1)
+  // O(1)
   get(index: number) {
     if (index < 0 || index > this.size) return;
     return this.data[index];

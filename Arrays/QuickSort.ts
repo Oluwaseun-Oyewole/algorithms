@@ -1,29 +1,25 @@
 // Average case O(n log n), worst case O(n^2)
-export function quickSort<T>(arr: T[]) {
-  function partition<T, Q extends number>(arr: T[], low: Q, high: Q) {
-    const pivot = arr[high];
-    let idx = low - 1;
-    for (let index = low; index < high; index++) {
-      if (arr[index] <= pivot) {
-        idx++;
-        [arr[idx], arr[index]] = [arr[index], arr[idx]];
-      }
-    }
-    [arr[idx + 1], arr[high]] = [arr[high], arr[idx + 1]];
-    return idx + 1;
-  }
+function partition<P>(arr: P[], low: number, high: number) {
+  let index = low - 1;
+  const pivot = arr[high];
 
-  function qs<T, Q extends number>(arr: T[], low: Q, high: Q) {
-    if (low >= high) return;
-    const pivotIndex = partition(arr, low, high);
-    qs(arr, low, pivotIndex - 1);
-    qs(arr, pivotIndex + 1, high);
+  for (let j = low; j < high; j++) {
+    if (arr[j] <= pivot) {
+      index++;
+      [arr[index], arr[j]] = [arr[j], arr[index]];
+    }
   }
-  qs(arr, 0, arr.length - 1);
+  [arr[index + 1], arr[high]] = [arr[high], arr[index + 1]];
+  return index + 1;
+}
+function quickSort<Q>(arr: Q[], low: number, high: number) {
+  if (low < high) {
+    const par = partition(arr, low, high);
+    quickSort(arr, low, par - 1);
+    quickSort(arr, par + 1, high);
+  }
   return arr;
 }
-
-console.log(quickSort([9, 3, 7, 4, 69]));
 
 export default function quickSortAlgo<T extends number>(arr: T[]): number[] {
   if (arr.length <= 1) return arr;
@@ -39,5 +35,5 @@ export default function quickSortAlgo<T extends number>(arr: T[]): number[] {
     }
   }
 
-  return [...quickSort(left), pivot, ...quickSort(right)];
+  return [...quickSortAlgo(left), pivot, ...quickSortAlgo(right)];
 }

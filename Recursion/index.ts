@@ -18,6 +18,7 @@ function walk(
   seen: boolean[][],
   path: Point[]
 ) {
+  //off the map
   if (
     currentPoint.x < 0 ||
     currentPoint.y < 0 ||
