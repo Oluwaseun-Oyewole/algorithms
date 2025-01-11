@@ -9,7 +9,7 @@ class ArrayList<A> {
     this.size = 0;
   }
 
-  // the operation is O(1)
+  // O(1)
   add(element: A) {
     if (this.size === this.capacity) this.resize();
     this.data[this.size] = element;
